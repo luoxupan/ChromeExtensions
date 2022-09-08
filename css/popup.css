@@ -1,0 +1,22 @@
+.footer {
+  width: 130px;
+  display: flex;
+  align-items: center;
+}
+.footer-github {
+  margin-bottom: -3px;
+}
+.footer-settings {
+  display: flex;
+  align-items: center;
+  margin: 0 15px;
+  cursor: pointer;
+}
+.footer-feedback {
+  display: flex;
+  align-items: center;
+}
+a {
+  color: unset;
+  text-decoration: none;
+}
