@@ -1,0 +1,19 @@
+{
+  "name": "ResMapToLocal",
+  "description": "Build an Extension!",
+  "version": "1.0",
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": true
+  },
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html"
+}
