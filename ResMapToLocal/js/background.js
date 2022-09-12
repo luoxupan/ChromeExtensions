@@ -28,7 +28,7 @@ var data = [
  * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp
  * 
  * 插件开发文档
- * https://developer.chrome.com/docs/extensions/reference/webRequest/
+ * https://developer.chrome.com/docs/extensions/reference/webRequest/#type-BlockingResponse
  */
 chrome.webRequest.onBeforeRequest.addListener(function (details) {
     let url = details.url;
@@ -39,7 +39,7 @@ chrome.webRequest.onBeforeRequest.addListener(function (details) {
         url = url.replace(reg, item.redirect_url);
       }
     }
-    return url === details.url ? {} : { redirectUrl: url };
+    return url === details.url ? { cancel: false } : { redirectUrl: url };
   },
   {urls: ["<all_urls>"]},
   ["blocking"]
