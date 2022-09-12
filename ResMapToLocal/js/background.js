@@ -8,7 +8,7 @@
 var data = [
 	{
 		"RegExp_url": "https://luoxupan.github.io/wiki/pages/webapp/main_04b9bf45.js",
-		"redirect_url": "http://localhost/map.js",
+		"redirect_url": "http://localhost/main_04b9bf45.js",
 		"enabled": true
 	},
 	{
@@ -18,7 +18,7 @@ var data = [
 	},
 	{
 		"RegExp_url": "https://luoxupan.github.io/wiki/pages/webapp/index.html",
-		"redirect_url": "http://localhost/map.html",
+		"redirect_url": "http://localhost/index.html",
 		"enabled": false
 	}
 ];
