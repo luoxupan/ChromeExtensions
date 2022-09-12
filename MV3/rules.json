@@ -2,8 +2,14 @@
   {
     "id": 1,
     "priority": 1,
-    "action": { "type": "redirect", "redirect": { "url": "http://localhost/main_04b9bf45.js" } },
-    "condition": { "urlFilter": "https://luoxupan.github.io/wiki/pages/webapp/main_04b9bf45.js", "resourceTypes": ["script"] }
+    "action": {
+      "type": "redirect",
+      "redirect": { "url": "http://localhost/main_04b9bf45.js" }
+    },
+    "condition": {
+      "urlFilter": "https://luoxupan.github.io/wiki/pages/webapp/main_04b9bf45.js",
+      "resourceTypes": ["script", "xmlhttprequest"]
+    }
   },
   {
     "id": 2,
@@ -32,6 +38,9 @@
     "priority": 1,
     "action": {
       "type": "modifyHeaders",
+      "requestHeaders": [
+        { "header": "h1", "operation": "set", "value": "v4" }
+      ],
       "responseHeaders": [
         { "header": "h1", "operation": "set", "value": "v4" },
         { "header": "h2", "operation": "append", "value": "v5" },
