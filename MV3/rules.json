@@ -1,6 +1,6 @@
 [
   {
-    "id": 0,
+    "id": 999,
     "priority": 1,
     "action": {
       "type": "modifyHeaders",
