@@ -21,10 +21,10 @@ const RulesTemp = {
       "priority": 1,
       "action": {
         "type": "redirect",
-        "redirect": { "url": redirect_url }
+        "redirect": { "regexSubstitution": redirect_url }
       },
       "condition": {
-        "urlFilter": RegExp_url,
+        "regexFilter": RegExp_url,
         "resourceTypes": ["script", "xmlhttprequest"]
       }
     }
