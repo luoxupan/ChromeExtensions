@@ -13,7 +13,7 @@ let rules = [
 	{
 		"RegExp_url": "https://cstest.xxxxx.com/cs-ticket-system/*",
 		"redirect_url": "http://localhost:3000/",
-		"enabled": true,
+		"enabled": false,
     "type": "ResProxy",
     "id": 2
 	},

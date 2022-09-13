@@ -34,26 +34,20 @@ const RulesTemp = {
 function generatorRules(existRules, rules) {
   let addRules = [];
   let removeRuleIds = [];
-  let enableRulesetIds = [];
-  let disableRulesetIds = [];
   for (let i = 0; i < rules.length; ++i) {
     const { RegExp_url, redirect_url, enabled, type, id } = rules[i];
     const isExist = existRules.includes(id);
-    if (enabled) {
-      if (isExist) {
-        enableRulesetIds.push(String(id));
-      } else if (type && RegExp_url && redirect_url) {
-        removeRuleIds.push(id);
-        addRules.push(RulesTemp[type](id, redirect_url, RegExp_url));
-      }
+    if (enabled && type && RegExp_url && redirect_url) {
+      removeRuleIds.push(id);
+      addRules.push(RulesTemp[type](id, redirect_url, RegExp_url));
     }
     if (!enabled && isExist) {
-      disableRulesetIds.push(String(id));
+      removeRuleIds.push(id);
     }
   }
   return {
-    addRules, removeRuleIds,
-    enableRulesetIds, disableRulesetIds
+    addRules,
+    removeRuleIds,
   };
 }
 
@@ -70,13 +64,11 @@ chrome.storage.onChanged.addListener(async function (changes, namespace) {
 
   const {
     addRules, removeRuleIds,
-    disableRulesetIds, enableRulesetIds
   } = generatorRules(existRules.map(({ id }) => id), rules);
-  console.log('rules:=', {addRules, removeRuleIds, disableRulesetIds, enableRulesetIds} )
+  console.log('rules:=', { addRules, removeRuleIds } )
   /**
    * 文档
    * https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/#method-updateDynamicRules
    */
-  chrome.declarativeNetRequest.updateDynamicRules({ addRules, removeRuleIds });
-  chrome.declarativeNetRequest.updateEnabledRulesets({ disableRulesetIds, enableRulesetIds });
+  await chrome.declarativeNetRequest.updateDynamicRules({ addRules, removeRuleIds });
 });
