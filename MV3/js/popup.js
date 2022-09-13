@@ -17,3 +17,12 @@
 //     document.body.style.backgroundColor = color;
 //   });
 // }
+
+/**
+ * 文档
+ * https://developer.chrome.com/docs/extensions/reference/runtime/#method-openOptionsPage
+ */
+const options = document.querySelector('#options');
+options.addEventListener("click", () => {
+  chrome.runtime.openOptionsPage();
+});
