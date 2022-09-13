@@ -1,0 +1,75 @@
+[
+  {
+    "id": 999,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        { "header": "h1", "operation": "set", "value": "v4" }
+      ],
+      "responseHeaders": [
+        { "header": "h1", "operation": "set", "value": "v4" },
+        { "header": "h2", "operation": "append", "value": "v5" },
+        { "header": "h3", "operation": "append", "value": "v6" }
+      ]
+    },
+    "condition": { "urlFilter": "*://*", "resourceTypes": ["xmlhttprequest"] }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": { "type": "redirect", "redirect": { "extensionPath": "/a.jpg" } },
+    "condition": { "urlFilter": "abcd.com", "resourceTypes": ["main_frame"] }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "http://localhost:3000/"
+      }
+    },
+    "condition": {
+      "regexFilter": "https://cstest.xxx.com/cs-ticket-system/*",
+      "resourceTypes": [
+        "script",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "http://localhost:3000/static/js/"
+      }
+    },
+    "condition": {
+      "regexFilter": "https://cstest.xxx.com/static/js/*",
+      "resourceTypes": [
+        "script",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "http://localhost:8686/static/kfcommon/"
+      }
+    },
+    "condition": {
+      "regexFilter": "https://cstest.xxx.com/static/kfcommon/*",
+      "resourceTypes": [
+        "script",
+        "xmlhttprequest"
+      ]
+    }
+  }
+]
