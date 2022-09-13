@@ -6,7 +6,7 @@ let rules = [
 	{
 		"RegExp_url": "https://luoxupan.github.io/wiki/pages/webapp/main_04b9bf45.js",
 		"redirect_url": "http://localhost:8080/main_04b9bf45.js",
-		"enabled": true,
+		"enabled": false,
     "type": "ResProxy",
     "id": 1
 	},
@@ -39,3 +39,8 @@ let rules = [
  */
 
 chrome.storage.sync.set({ rules: rules });
+
+async function getStorageRules() {
+  const { rules } = await chrome.storage.sync.get(['rules']);
+  return rules;
+}
