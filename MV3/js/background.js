@@ -25,7 +25,7 @@ const RulesTemp = {
       },
       "condition": {
         "regexFilter": RegExp_url,
-        "resourceTypes": ["script", "xmlhttprequest"]
+        "resourceTypes": ["script", "xmlhttprequest", "stylesheet", "main_frame"]
       }
     }
   },
