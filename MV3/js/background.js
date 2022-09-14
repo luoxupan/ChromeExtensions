@@ -89,7 +89,7 @@ function Toast({ title, message }) {
     message
   });
 }
-// chrome.notifications.clear('id')
+
 
 /**
  * 文档
