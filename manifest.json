@@ -32,7 +32,7 @@
     "rule_resources": [{
       "id": "ruleset",
       "enabled": true,
-      "path": "rules.json"
+      "path": "/rules/rules.json"
     }]
   },
   "action": {
