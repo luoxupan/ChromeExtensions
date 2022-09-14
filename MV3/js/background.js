@@ -56,8 +56,10 @@ function generatorRules(existRules, rules) {
  * { "rules": { "newValue": {}, "oldValue": {} } }
  */
 chrome.storage.onChanged.addListener(async function (changes, namespace) {
-  const { rules } = await chrome.storage.sync.get(['rules']);
-  console.log('rules is:' + JSON.stringify(rules));
+  console.log('storageData:onChanged', changes, namespace);
+  const storageData = await chrome.storage.sync.get(['rules']);
+  const { rules } = storageData;
+  console.log('storageData:', JSON.stringify(storageData));
 
   const existRules = await chrome.declarativeNetRequest.getDynamicRules();
   console.log('existRules:', existRules)
@@ -65,10 +67,41 @@ chrome.storage.onChanged.addListener(async function (changes, namespace) {
   const {
     addRules, removeRuleIds,
   } = generatorRules(existRules.map(({ id }) => id), rules);
-  console.log('rules:=', { addRules, removeRuleIds } )
   /**
    * 文档
    * https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/#method-updateDynamicRules
    */
   await chrome.declarativeNetRequest.updateDynamicRules({ addRules, removeRuleIds });
+});
+
+/**
+ * 解决Mac系统无法弹出消息问题
+ * 1、在Chrome浏览器中访问地址：chrome://flags
+ * 2、搜索：notifications，找到 Enable system notifications 选项
+ * 3、将其选项值改为 Disabled，重启浏览器
+ */
+function Toast({ title, message }) {
+  chrome.notifications.create('toast', {
+    requireInteraction: true,
+    iconUrl: '/assets/icon.png',
+    type: 'basic',
+    title,
+    message
+  });
+}
+// chrome.notifications.clear('id')
+
+/**
+ * 文档
+ * https://developer.chrome.com/docs/extensions/reference/alarms/#type-AlarmCreateInfo
+ */
+chrome.alarms.create('clock', {
+  when: Date.now() + 1000 * 5
+});
+chrome.alarms.onAlarm.addListener((alarm) => {
+  const { name } = alarm;
+  if (name === 'clock') {
+    console.log('alarm:', alarm);
+    Toast({ title: '提醒', message: '时间到' })
+  }
 });
