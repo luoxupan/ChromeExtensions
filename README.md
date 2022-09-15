@@ -1,8 +1,13 @@
-### Chrome插件
+## Chrome插件
 
-开发参考文档：[https://developer.chrome.com/docs/extensions/mv3/getstarted/](https://developer.chrome.com/docs/extensions/mv3/getstarted/)
+#### 支持功能
+- 前端线上静态文件代理到本地
 
-### [declarativeNetRequest](https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/)
-
+#### 开发文档：
+- [https://developer.chrome.com/docs/extensions/mv3/getstarted/](https://developer.chrome.com/docs/extensions/mv3/getstarted/)
+- [declarativeNetRequest](https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/)
 - [resourceTypes](https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/#type-ResourceType)
+
+
+
 
