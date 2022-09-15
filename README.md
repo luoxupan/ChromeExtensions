@@ -10,6 +10,6 @@
 
 #### 发布插件
 - Chrome商店规定发布插件前需要先注册开发者账号
-- 注册开发者账号需支付 ${\color{red}5美元}$ 注册费，于是我立即决定放弃发布插件
+- 注册开发者账号需支付 ${\color{red}5美元}$ 注册费，于是我立即决定 ${\color{red}放弃}$ 发布插件
 - [https://chrome.google.com/webstore/devconsole/register](https://chrome.google.com/webstore/devconsole/register) 
 
