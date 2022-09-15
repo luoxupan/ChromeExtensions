@@ -8,6 +8,8 @@
 - [declarativeNetRequest](https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/)
 - [resourceTypes](https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/#type-ResourceType)
 
-
-
+#### 发布插件
+- Chrome商店规定发布插件前需要先注册开发者账号
+- 注册开发者需支付5美元，于是我立即放弃。。。
+- [https://chrome.google.com/webstore/devconsole/register](https://chrome.google.com/webstore/devconsole/register) 
 
