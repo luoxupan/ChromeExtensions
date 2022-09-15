@@ -35,6 +35,11 @@
       "path": "/rules/rules.json"
     }]
   },
+  "icons": {
+    "16": "/assets/16icon.png",
+    "32": "/assets/32icon.png",
+    "48": "/assets/48icon.png"
+  },
   "action": {
     "default_popup": "popup.html"
   },
