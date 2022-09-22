@@ -6,7 +6,7 @@
 #### 插件安装
 1. `git clone git@github.com:luoxupan/ChromeExtensions.git`
 2. 打开Chrome浏览器输入`chrome://extensions/`回车
-3. 点击左上角的`Load unpacked`按钮
+3. 在第二步页面里面，点击左上角的`Load unpacked`按钮
 4. 在弹出文件选择框中，选中ChromeExtensions文件夹即可
 
 #### 插件开发背景
