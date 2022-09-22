@@ -1,7 +1,9 @@
 ## Chrome插件
 
 #### 支持功能
-- 前端线上静态文件代理到本地
+
+- [x] 前端线上静态文件代理到本地
+- [ ] 修改接口请求头参数
 
 #### 插件安装
 1. `git clone git@github.com:luoxupan/ChromeExtensions.git`
