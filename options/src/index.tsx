@@ -4,7 +4,7 @@ import 'antd/dist/antd.less';
 import { Options } from './components/index';
 
 createRoot(
-  document.querySelector('#app') as HTMLElement
+  document.body as HTMLElement
 ).render(
   <Options />
 );
