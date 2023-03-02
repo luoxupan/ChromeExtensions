@@ -1,0 +1,2 @@
+./dist/undoredo
+./dist/options
