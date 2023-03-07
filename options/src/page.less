@@ -1,0 +1,18 @@
+.page {
+  hr {
+    height: 0.25em;
+    padding: 0;
+    margin: 24px 0;
+    background-color: #d0d7de;
+    border: 0;
+  }
+  hr::before {
+    display: table;
+    content: "";
+  }
+  hr::after {
+    display: table;
+    clear: both;
+    content: "";
+  }
+}

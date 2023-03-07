@@ -4,7 +4,7 @@ import { Utils } from '../../services';
 import { Upload } from '../Upload';
 import { Form, Button, Input, Switch, message } from 'antd';
 
-export function Options() {
+export function MapRemote() {
 
   const [form] = Form.useForm();
   const formRef = React.useRef({} as any);

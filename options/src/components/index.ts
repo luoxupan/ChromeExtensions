@@ -1,2 +1,3 @@
-export * from './Options';
+export * from './MapRemote';
 export * from './Upload';
+export * from './Proxy';

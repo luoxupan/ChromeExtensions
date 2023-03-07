@@ -25,6 +25,7 @@ class Background {
     var config = {
       value: {
         mode: "fixed_servers",
+        // mode: "system",
         rules: {
           proxyForHttp: {
             scheme: "http",
