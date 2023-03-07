@@ -9,7 +9,7 @@ const RulesTemp = {
       },
       "condition": {
         "regexFilter": RegExp_url,
-        "resourceTypes": ["script", "xmlhttprequest", "stylesheet", "main_frame"]
+        "resourceTypes": ["script", "xmlhttprequest", "stylesheet", "main_frame", "sub_frame", "media", "image", "font"]
       }
     }
   },
@@ -19,6 +19,24 @@ class Background {
   constructor() {
     this.onAlarm();
     this.onChangedStorage();
+    this.proxy();
+  }
+  proxy() {
+    var config = {
+      value: {
+        mode: "fixed_servers",
+        rules: {
+          proxyForHttp: {
+            scheme: "http",
+            host: "127.0.0.1",
+            port: 8080,
+          },
+          bypassList: []
+        },
+      },
+      scope: 'regular',
+    };
+    chrome.proxy.settings.set(config, function() {});
   }
   static toast({ title, message }) {
     /**
