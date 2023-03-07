@@ -19,29 +19,37 @@ class Background {
   constructor() {
     this.onAlarm();
     this.onChangedStorage();
-    this.proxy();
   }
-  proxy() {
+  static proxy({ enabled, scheme, host, port }) {
+    var proxy = {};
+    scheme.forEach((item) => {
+      proxy[item] = {
+        scheme: ({ proxyForHttp: 'http', proxyForHttps: 'https' })[item],
+        host,
+        port,
+      }
+    });
     var config = {
       value: {
-        mode: "fixed_servers",
-        // mode: "system",
+        mode: enabled ? "fixed_servers" : "system",
         rules: {
-          proxyForHttp: {
-            scheme: "http",
-            host: "127.0.0.1",
-            port: 8080,
-          },
-          proxyForHttps: {
-            scheme: "http",
-            host: "127.0.0.1",
-            port: 8080,
-          },
+          // proxyForHttp: {
+          //   scheme: 'http',
+          //   host: '127.0.0.1',
+          //   port: 8080,
+          // },
+          // proxyForHttps: {
+          //   scheme: 'https',
+          //   host: '127.0.0.1',
+          //   port: 8080,
+          // },
+          ...proxy,
           bypassList: []
         },
       },
       scope: 'regular',
     };
+
     chrome.proxy.settings.set(config, function() {});
   }
   static toast({ title, message }) {
@@ -82,21 +90,29 @@ class Background {
      */
     chrome.storage.onChanged.addListener(async function (changes, namespace) {
       console.log('storageData:onChanged', changes, namespace);
-      const storageData = await chrome.storage.sync.get(['rules']);
-      const { rules } = storageData;
-      console.log('storageData:', JSON.stringify(storageData));
+      if (changes.rules) {
+        const storageData = await chrome.storage.sync.get(['rules']);
+        const { rules } = storageData;
+        console.log('storageData:', JSON.stringify(storageData));
 
-      const existRules = await chrome.declarativeNetRequest.getDynamicRules();
-      console.log('existRules:', existRules)
+        const existRules = await chrome.declarativeNetRequest.getDynamicRules();
+        console.log('existRules:', existRules)
 
-      const {
-        addRules, removeRuleIds,
-      } = Background.generatorRules(existRules.map(({ id }) => id), rules);
-      /**
-       * 文档
-       * https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/#method-updateDynamicRules
-       */
-      await chrome.declarativeNetRequest.updateDynamicRules({ addRules, removeRuleIds });
+        const {
+          addRules, removeRuleIds,
+        } = Background.generatorRules(existRules.map(({ id }) => id), rules);
+        /**
+         * 文档
+         * https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/#method-updateDynamicRules
+         */
+        await chrome.declarativeNetRequest.updateDynamicRules({ addRules, removeRuleIds });
+      }
+      if (changes.proxy) {
+        const storageData = await chrome.storage.sync.get(['proxy']);
+        const { proxy } = storageData;
+        console.log('storageData:', JSON.stringify(storageData));
+        Background.proxy(proxy);
+      }
     });
   }
   createAlarm() {

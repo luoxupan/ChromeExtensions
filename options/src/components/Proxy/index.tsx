@@ -26,12 +26,12 @@ export function Proxy() {
       <Form form={form}>
         <Form.Item
           label={'协议'}
-          name={'protocol'}
+          name={'scheme'}
           rules={[
             { required: true, message: '选择协议' },
           ]}
         >
-          <Select placeholder="选择协议">
+          <Select mode="multiple" placeholder="选择协议">
             <Select.Option value="proxyForHttp">proxyForHttp</Select.Option>
             <Select.Option value="proxyForHttps">proxyForHttps</Select.Option>
           </Select>
@@ -49,8 +49,7 @@ export function Proxy() {
           label={'Port'}
           name={'port'}
           rules={[
-            { required: true, message: '输入URL链接' },
-            { pattern: /^https?:\/\/.*$/i, message: '输入URL链接' }
+            { required: true, message: '输入port' },
           ]}
         >
           <InputNumber autoComplete="off" placeholder="8080" />
