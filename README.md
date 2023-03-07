@@ -31,5 +31,15 @@
 - [resourceTypes](https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/#type-ResourceType)
 
 
+---
+
+
+### [mitmproxy](https://docs.mitmproxy.org/) `Map Remote`使用
+1. `brew install mitmproxy`安装
+2. 在`terminal`执行`mitmweb`命令
+3. 浏览器proxy到本地`mitmweb`服务的`8080`端口
+4. `http://127.0.0.1:8081/`options配置项配置`map_remote`
+5. `map_remote`如果配置多个map，直接回车输入下一个转发规则即可
+
 
 <!-- ![](https://img.shields.io/static/v1?label=&message=hello&color=green) -->
